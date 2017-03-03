@@ -16,14 +16,22 @@
 #include <cstdlib>   //(EXIT SUCCESS)
 #include <iostream>  // cout/cin
 #include <cstdio>    //getchar
+#include "BinaryMatrix.hpp"
 
+
+#define VIDER_BUFFER while(getchar() != '\n')//Vider le buffer
 
 using namespace std;
 
-#define VIDER_BUFFER while(getchar() != '\n') //Vider le buffer
-
 int main() {
-
+   srand(time(0));
+   BinaryMatrix m(5);
+   BinaryMatrix m1(5);
+   m.display();
+   m1.display();
+   m.opOr(m1);
+   m.display();
+   
    //Vider buffer et quitter
    cout << "Press ENTER pour quitter\n";
    VIDER_BUFFER;

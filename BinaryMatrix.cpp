@@ -6,4 +6,55 @@
 //  Copyright © 2017 Pierre-Samuel Rochat. All rights reserved.
 //
 
+#include <iostream>
+#include <stdlib.h>
 #include "BinaryMatrix.hpp"
+
+#define RANDOM bool(int((1 + rand() / (RAND_MAX + 1.0)*2) - 1))
+
+using namespace std;
+
+BinaryMatrix::BinaryMatrix(int size): size(size) {
+   matrix = new bool[size*size];
+   init();
+}
+
+void BinaryMatrix::display() {
+   for(int i = 0; i < size; ++i){
+      for(int j = 0; j < size; ++j){
+         cout << matrix[i*size + j];
+         if (j > 0 or j < size)
+            cout << " ";
+      }
+      cout << endl;
+   }
+   cout << endl;
+}
+
+void BinaryMatrix::init() {
+   for(int i = 0; i < size; ++i){
+      for(int j = 0; j < size; ++j){
+         matrix[i*size + j] = RANDOM;
+      }
+   }
+}
+
+bool* BinaryMatrix::getMatrix() {
+   return matrix;
+}
+
+void BinaryMatrix::opOr(BinaryMatrix m) {
+   bool *matrixOp = m.getMatrix();
+   for(int i = 0; i < size; ++i){
+      for(int j = 0; j < size; ++j){
+         matrix[i*size + j] = matrix[i*size + j] and matrixOp[i*size + j];
+      }
+   }
+}
+
+
+
+
+
+
+
