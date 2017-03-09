@@ -15,14 +15,19 @@
 using namespace std;
 
 BinaryMatrix::BinaryMatrix(int size): size(size) {
-   matrix = new bool[size*size];
+   matrix = new bool*[size];
+   for(int i = 0; i < size; i++){
+      matrix[i] = new bool[size];
+   }
    init();
 }
-
-void BinaryMatrix::display() {
+BinaryMatrix::~BinaryMatrix(){
+   
+}
+void BinaryMatrix::display()const {
    for(int i = 0; i < size; ++i){
       for(int j = 0; j < size; ++j){
-         cout << matrix[i*size + j];
+         cout << matrix[i][j];
          if (j > 0 or j < size)
             cout << " ";
       }
@@ -34,20 +39,20 @@ void BinaryMatrix::display() {
 void BinaryMatrix::init() {
    for(int i = 0; i < size; ++i){
       for(int j = 0; j < size; ++j){
-         matrix[i*size + j] = RANDOM;
+         matrix[i][j] = RANDOM;
       }
    }
 }
 
-bool* BinaryMatrix::getMatrix() {
+bool** BinaryMatrix::getMatrix() const{
    return matrix;
 }
 
-void BinaryMatrix::opOr(BinaryMatrix m) {
-   bool *matrixOp = m.getMatrix();
+void BinaryMatrix::opOr(const BinaryMatrix& m) {
+   bool **matrixOp = m.getMatrix();
    for(int i = 0; i < size; ++i){
       for(int j = 0; j < size; ++j){
-         matrix[i*size + j] = matrix[i*size + j] and matrixOp[i*size + j];
+         matrix[i][j] = matrix[i][j] or matrixOp[i][j];
       }
    }
 }

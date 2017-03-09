@@ -18,14 +18,15 @@ class BinaryMatrix {
 private:
    //Taille de la matrice
    int size;
-   bool *matrix;
+   bool **matrix;
    
 public:
    BinaryMatrix(int size);
-   void display();
+   ~BinaryMatrix();
+   void display() const;
    void init();
-   bool* getMatrix();
-   void opOr(BinaryMatrix m);
+   bool** getMatrix() const;
+   void opOr(const BinaryMatrix& m);
 };
 
 #endif /* BinaryMatrix_hpp */
