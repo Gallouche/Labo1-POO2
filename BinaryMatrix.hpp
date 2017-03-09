@@ -27,6 +27,8 @@ public:
    void init();
    bool** getMatrix() const;
    void opOr(const BinaryMatrix& m);
+   BinaryMatrix opOrVal(const BinaryMatrix& m);
+   BinaryMatrix* opOrRef(const BinaryMatrix& m);
 };
 
 #endif /* BinaryMatrix_hpp */

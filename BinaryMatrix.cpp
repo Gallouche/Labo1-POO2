@@ -57,6 +57,31 @@ void BinaryMatrix::opOr(const BinaryMatrix& m) {
    }
 }
 
+BinaryMatrix BinaryMatrix::opOrVal(const BinaryMatrix& m) {
+   BinaryMatrix *resultMatrix;
+   bool **matrixOp = m.getMatrix();
+   
+   for(int i = 0; i < size; ++i){
+      for(int j = 0; j < size; ++j){
+         ((*resultMatrix).getMatrix())[i][j] = matrix[i][j] or matrixOp[i][j];
+      }
+   }
+   
+   return *resultMatrix;
+}
+
+BinaryMatrix* BinaryMatrix::opOrRef(const BinaryMatrix& m) {
+   BinaryMatrix *resultMatrix;
+   bool **matrixOp = m.getMatrix();
+   
+   for(int i = 0; i < size; ++i){
+      for(int j = 0; j < size; ++j){
+         ((*resultMatrix).getMatrix())[i][j] = matrix[i][j] or matrixOp[i][j];
+      }
+   }
+   
+   return resultMatrix;
+}
 
 
 

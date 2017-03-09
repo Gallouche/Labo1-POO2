@@ -32,6 +32,9 @@ int main() {
    m.opOr(m1);
    m.display();
    
+   (m.opOrVal(m1)).display();
+   (*(m.opOrRef(m1))).display();
+   
    //Vider buffer et quitter
    cout << "Press ENTER pour quitter\n";
    VIDER_BUFFER;
