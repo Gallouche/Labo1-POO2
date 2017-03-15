@@ -1,13 +1,14 @@
 /*
  -------------------------------------------------------------------------------
- Laboratoire : <nn>
- Fichier     : <nom du fichier>.cpp
- Auteur(s)   : Théo Gallandat
- Date        : <jj.mm.aaaa>
+ Laboratoire : Labo1-POO2
+ Fichier     : main.cpp
+ Auteur(s)   : Théo Gallandat & Pierre-Samuel Rochat
+ Date        : 16/03/2017
 
- But         : <à compléter>
+ But         : Provide a main method that realise a series of test for the different
+               implemented operators.
 
- Remarque(s) : <à compléter>
+ Remarque(s) : R.A.S.
 
  Compilateur : MinGW-g++ 4.8.1
  -------------------------------------------------------------------------------
@@ -88,11 +89,10 @@ int main() {
    m5.opOnMatrix(m6, opXor);
    m5.display();
    
-   
-      
-   //Vider buffer et quitter
-   cout << "Press ENTER pour quitter\n";
-   VIDER_BUFFER;
+   //destruction of the objets used
+   delete &opAnd;
+   delete &opOr;
+   delete &opXor;
 
    return EXIT_SUCCESS;
 }

@@ -1,9 +1,15 @@
-//
-//  Operation.cpp
-//  Labo1-POO2
-//
-//  Created by Pierre-Samuel Rochat on 15.03.17.
-//  Copyright © 2017 Pierre-Samuel Rochat. All rights reserved.
-//
+/*
+ -------------------------------------------------------------------------------
+ Laboratoire : Labo1-POO2
+ Fichier     : Operation.cpp
+ Auteur(s)   : Théo Gallandat & Pierre-Samuel Rochat
+ Date        : 16/03/2017
 
+ But         : 
+
+ Remarque(s) : R.A.S.
+
+ Compilateur : MinGW-g++ 4.8.1
+ -------------------------------------------------------------------------------
+ */
 #include <stdio.h>
