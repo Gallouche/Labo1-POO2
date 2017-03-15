@@ -76,7 +76,7 @@ void BinaryMatrix::applyOperation(BinaryMatrix& resultMatrix,
    for(int i = 0; i < size; ++i){
       for(int j = 0; j < size; ++j){
          (resultMatrix.matrix)[i][j] =
-         op.Operation::applyOperator(matrix[i][j], (m.matrix)[i][j]);
+         op.applyOperator(matrix[i][j], (m.matrix)[i][j]);
       }
    }
 }
