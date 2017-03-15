@@ -1,11 +1,3 @@
-//
-//  BinaryMatrix.cpp
-//  lab13_matrice
-//
-//  Created by Pierre-Samuel Rochat on 02.03.17.
-//  Copyright © 2017 Pierre-Samuel Rochat. All rights reserved.
-//
-
 #include <iostream>
 #include <stdlib.h>
 #include "BinaryMatrix.hpp"
@@ -18,12 +10,28 @@ BinaryMatrix::BinaryMatrix(int size): size(size) {
    matrix = new bool*[size];
    for(int i = 0; i < size; i++){
       matrix[i] = new bool[size];
+      for(int j = 0; j < size; ++j){
+         matrix[i][j] = RANDOM;
+      }
+
    }
-   init();
 }
-BinaryMatrix::~BinaryMatrix(){
+BinaryMatrix::BinaryMatrix(const BinaryMatrix& m) {
+   
+   matrix = m.matrix;
+   for(int i = 0; i < size; i++){
+      matrix[i] = m.matrix[i];
+   }
    
 }
+
+BinaryMatrix::~BinaryMatrix(){
+   for(int i = 0; i < size; i++){
+      delete matrix[i];
+   }
+   delete matrix;
+}
+
 void BinaryMatrix::display()const {
    for(int i = 0; i < size; ++i){
       for(int j = 0; j < size; ++j){
@@ -36,55 +44,39 @@ void BinaryMatrix::display()const {
    cout << endl;
 }
 
-void BinaryMatrix::init() {
-   for(int i = 0; i < size; ++i){
-      for(int j = 0; j < size; ++j){
-         matrix[i][j] = RANDOM;
-      }
-   }
+
+void BinaryMatrix::opOnMatrix(const BinaryMatrix& m, const Operation& op) {
+   
+   applyOperation(*this, m, op);
 }
 
-bool** BinaryMatrix::getMatrix() const{
-   return matrix;
-}
 
-void BinaryMatrix::opOr(const BinaryMatrix& m) {
-   bool **matrixOp = m.getMatrix();
-   for(int i = 0; i < size; ++i){
-      for(int j = 0; j < size; ++j){
-         matrix[i][j] = matrix[i][j] or matrixOp[i][j];
-      }
-   }
-}
-
-BinaryMatrix BinaryMatrix::opOrVal(const BinaryMatrix& m) {
-   BinaryMatrix *resultMatrix;
-   bool **matrixOp = m.getMatrix();
+BinaryMatrix BinaryMatrix::opReturnVal(const BinaryMatrix& m,
+                                       const Operation& op) {
    
-   for(int i = 0; i < size; ++i){
-      for(int j = 0; j < size; ++j){
-         ((*resultMatrix).getMatrix())[i][j] = matrix[i][j] or matrixOp[i][j];
-      }
-   }
-   
-   return *resultMatrix;
-}
-
-BinaryMatrix* BinaryMatrix::opOrRef(const BinaryMatrix& m) {
-   BinaryMatrix *resultMatrix;
-   bool **matrixOp = m.getMatrix();
-   
-   for(int i = 0; i < size; ++i){
-      for(int j = 0; j < size; ++j){
-         ((*resultMatrix).getMatrix())[i][j] = matrix[i][j] or matrixOp[i][j];
-      }
-   }
-   
+   BinaryMatrix resultMatrix(size);
+   applyOperation(resultMatrix, m, op);
    return resultMatrix;
 }
 
 
+BinaryMatrix* BinaryMatrix::opReturnRef(const BinaryMatrix& m,
+                                        const Operation& op) {
+   
+   BinaryMatrix* resultMatrix = new BinaryMatrix(size);
+   applyOperation(*resultMatrix, m, op);
+   return resultMatrix;
+}
 
 
-
-
+void BinaryMatrix::applyOperation(BinaryMatrix& resultMatrix,
+                                  const BinaryMatrix& m, const Operation& op) {
+   
+   
+   for(int i = 0; i < size; ++i){
+      for(int j = 0; j < size; ++j){
+         (resultMatrix.matrix)[i][j] =
+         op.Operation::applyOperator(matrix[i][j], (m.matrix)[i][j]);
+      }
+   }
+}

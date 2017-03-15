@@ -1,0 +1,5 @@
+#include "Or.hpp"
+
+bool Or::applyOperator(bool b1, bool b2) const {
+   return b1 | b2;
+}
