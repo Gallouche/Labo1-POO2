@@ -1,12 +1,11 @@
 /*
  -------------------------------------------------------------------------------
  Laboratoire : Labo1-POO2
- Fichier     : BinaryMatrix.hpp
+ Fichier     : And.hpp
  Auteur(s)   : Théo Gallandat & Pierre-Samuel Rochat
  Date        : 16/03/2017
 
- But         : Provide a class that create a random binary matrix and gives methods
-               to apply operators and display it.
+ But         : Provide the Classe And, for overide the apllyOperator method.
 
  Remarque(s) : R.A.S.
 
