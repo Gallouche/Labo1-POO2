@@ -13,6 +13,7 @@
  Compilateur : MinGW-g++ 4.8.1
  -------------------------------------------------------------------------------
  */
+
 #ifndef BinaryMatrix_hpp
 #define BinaryMatrix_hpp
 
@@ -27,14 +28,14 @@ using namespace std;
 
 class BinaryMatrix {
 private:
-   //size of the matrix
+
    int size;
    bool **matrix;
    
 public:
    
    /**
-    * Constructor that take the desired size in parameter.
+    * Constructor that take a size in parameter to create a n x n matrix.
     * @param size
     */
    BinaryMatrix(int size);
@@ -56,38 +57,39 @@ public:
    void display() const;
    
    /**
-    * Method twho apply the operation on the matrix herself, calls applyOperation method.
+    * Method that apply the operation on the matrix herself, calls applyOperation method.
     * @param m, the other operand matrix.
-    * @param op, operation you want to apply.
+    * @param op, the operation you want to apply.
     */
    void opOnMatrix(const BinaryMatrix& m, const Operation& op);
    
    /**
-    * Method who apply an operation between the matrix and an other and return it 
+    * Method that apply an operation between the matrix and an other and return it
     * by value.
-    * @param m the other operand matrix.
-    * @param op the operation you cant to apply.
-    * @return the result binary operation.
+    * @param m, the other operand matrix.
+    * @param op, the operation you want to apply.
+    * @return the result matrix of the operation.
     */
    BinaryMatrix opReturnVal(const BinaryMatrix& m,  const Operation& op);
    
    /**
-    Method who apply an operation between the matrix and an other and return it 
-    * by reference.
-    * @param m the other operand matrix.
-    * @param op the operation you cant to apply.
+    * Method that apply an operation between the matrix and an other and return
+    * a pointer to the new resultMatrix.
+    * @param m, the other operand matrix.
+    * @param op, the operation you want to apply.
+    * @return a pointer on the result matrix of the operation.
     */
-   BinaryMatrix* opReturnRef(const BinaryMatrix& m,  const Operation& op);
+   BinaryMatrix* opReturnPtr(const BinaryMatrix& m,  const Operation& op);
    
    /**
-    * Method who take a result matix, the second operand matrix, the operator, and
-    * parcours the matrices to apply the choosen operator on every elements.
-    * @param resultMatrix, matrix that will be returned.
-    * @param m2 the second operand matrix.
-    * @param op the operator to apply between the matrices.
+    * Method that take a result matix, the second operand matrix, the operator,
+    * and parcours the matrices to apply the choosen operator on every elements.
+    * @param resultMatrix, the matrix in which we store the results.
+    * @param m, the second operand matrix.
+    * @param op, the operator to apply between the matrices.
     */
    void applyOperation(BinaryMatrix& resultMatrix,
-                       const BinaryMatrix& m2,
+                       const BinaryMatrix& m,
                        const Operation& op);
 };
 

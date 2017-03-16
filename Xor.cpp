@@ -12,6 +12,7 @@
  Compilateur : MinGW-g++ 4.8.1
  -------------------------------------------------------------------------------
  */
+
 #include "Xor.hpp"
 
 bool Xor::applyOperator(bool b1, bool b2) const {

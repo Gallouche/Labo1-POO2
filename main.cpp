@@ -29,9 +29,9 @@ using namespace std;
 
 int main() {
    
-   Or opOr = *(new Or());
-   And opAnd = *(new And());
-   Xor opXor = *(new Xor());
+   Or* opOr = new Or();
+   And* opAnd = new And();
+   Xor* opXor = new Xor();
    
    srand(time(0));
    
@@ -46,11 +46,11 @@ int main() {
    m2.display();
    
    cout << "Return by VALUE : " << endl;
-   (m1.opReturnVal(m2, opOr)).display();
-   cout << "Return by REFEFENCE : " << endl;
-   (m1.opReturnRef(m2, opOr))->display();
+   (m1.opReturnVal(m2, *opOr)).display();
+   cout << "Return by POINTER : " << endl;
+   (m1.opReturnPtr(m2, *opOr))->display();
    cout << "Modification of M1 : " << endl;
-   m1.opOnMatrix(m2, opOr);
+   m1.opOnMatrix(m2, *opOr);
    m1.display();
    
    cout << "----------------------------------------------------------" << endl;
@@ -64,11 +64,11 @@ int main() {
    m4.display();
    
    cout << "Return by VALUE : " << endl;
-   (m3.opReturnVal(m4, opAnd)).display();
-   cout << "Return by REFEFENCE : " << endl;
-   (m3.opReturnRef(m4, opAnd))->display();
+   (m3.opReturnVal(m4, *opAnd)).display();
+   cout << "Return by POINTER : " << endl;
+   (m3.opReturnPtr(m4, *opAnd))->display();
    cout << "Modification of M3 : " << endl;
-   m3.opOnMatrix(m4, opAnd);
+   m3.opOnMatrix(m4, *opAnd);
    m3.display();
    
    cout << "----------------------------------------------------------" << endl;
@@ -82,17 +82,17 @@ int main() {
    m6.display();
    
    cout << "Return by VALUE : " << endl;
-   (m5.opReturnVal(m6, opXor)).display();
-   cout << "Return by REFEFENCE : " << endl;
-   (m5.opReturnRef(m6, opXor))->display();
+   (m5.opReturnVal(m6, *opXor)).display();
+   cout << "Return by POINTER : " << endl;
+   (m5.opReturnPtr(m6, *opXor))->display();
    cout << "Modification of M3 : " << endl;
-   m5.opOnMatrix(m6, opXor);
+   m5.opOnMatrix(m6, *opXor);
    m5.display();
    
    //destruction of the objets used
-   delete &opAnd;
-   delete &opOr;
-   delete &opXor;
+   delete opAnd;
+   delete opOr;
+   delete opXor;
 
    return EXIT_SUCCESS;
 }

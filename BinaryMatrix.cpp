@@ -12,6 +12,7 @@
  Compilateur : MinGW-g++ 4.8.1
  -------------------------------------------------------------------------------
  */
+
 #include <iostream>
 #include <stdlib.h>
 #include "BinaryMatrix.hpp"
@@ -69,11 +70,16 @@ BinaryMatrix BinaryMatrix::opReturnVal(const BinaryMatrix& m,
    
    BinaryMatrix resultMatrix(size);
    applyOperation(resultMatrix, m, op);
+   
+   // The resultMatrix is returned by value (copy of the object) and not by
+   // reference because when leaving the method the original resultMatrix no
+   // longer exists and by consequence the returned reference would have refered
+   // to nothing.
    return resultMatrix;
 }
 
 
-BinaryMatrix* BinaryMatrix::opReturnRef(const BinaryMatrix& m,
+BinaryMatrix* BinaryMatrix::opReturnPtr(const BinaryMatrix& m,
                                         const Operation& op) {
    
    BinaryMatrix* resultMatrix = new BinaryMatrix(size);

@@ -13,6 +13,7 @@
  Compilateur : MinGW-g++ 4.8.1
  -------------------------------------------------------------------------------
  */
+
 #ifndef Operation_hpp
 #define Operation_hpp
 
@@ -21,7 +22,7 @@
 class Operation {
    public:
    /**
-    * Abstarct method that apply an boolean operator between two boolean.
+    * Abstarct method that apply a boolean operator between two boolean.
     * @param b1 1st operand.
     * @param b2 2nd operand.
     * @return result of the operation.
