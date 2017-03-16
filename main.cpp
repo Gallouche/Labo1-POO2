@@ -22,9 +22,6 @@
 #include "And.hpp"
 #include "Xor.hpp"
 
-
-#define VIDER_BUFFER while(getchar() != '\n')//Vider le buffer
-
 using namespace std;
 
 int main() {
